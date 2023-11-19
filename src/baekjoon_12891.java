@@ -11,6 +11,10 @@ public class baekjoon_12891 {
             String[] inputs = br.readLine().split(" ");
             int S = Integer.parseInt(inputs[0]);
             int P = Integer.parseInt(inputs[1]);
+            int cntA = 0;
+            int cntC = 0;
+            int cntG = 0;
+            int cntT = 0;
 
             String allStr = br.readLine();
 //            int S = 9;
@@ -29,54 +33,58 @@ public class baekjoon_12891 {
 //            int[] condition = {2, 0, 1, 1};
 //            int[] condition = {1, 0, 0, 1};
 
-            while(endIdx <= S){
 //                System.out.println("startIdx: " + startIdx);
 //                System.out.println("endIdx: " + endIdx);
 
 
 //                for(int i = startIdx; i < endIdx; i++){
-                    String partOfStr = allStr.substring(startIdx, endIdx);
+            String partOfStr = allStr.substring(startIdx, endIdx);
 //                    System.out.println("partOfStr: " + partOfStr);
 
-                    int cntA = 0;
-                    int cntC = 0;
-                    int cntG = 0;
-                    int cntT = 0;
 
-                    for(int j = 0; j < partOfStr.length(); j++){
+
+            for(int j = 0; j < partOfStr.length(); j++){
 //                        System.out.println("partOfStr.charAt(j): " + partOfStr.charAt(j));
 
-                        if("A".equals(String.valueOf(partOfStr.charAt(j)))){
-                            cntA++;
-                        }else if("C".equals(String.valueOf(partOfStr.charAt(j)))){
-                            cntC++;
-                        }else if("G".equals(String.valueOf(partOfStr.charAt(j)))){
-                            cntG++;
-                        }else if("T".equals(String.valueOf(partOfStr.charAt(j)))){
-                            cntT++;
-                        }
+                if("A".equals(String.valueOf(partOfStr.charAt(j)))){
+                    cntA++;
+                }else if("C".equals(String.valueOf(partOfStr.charAt(j)))){
+                    cntC++;
+                }else if("G".equals(String.valueOf(partOfStr.charAt(j)))){
+                    cntG++;
+                }else if("T".equals(String.valueOf(partOfStr.charAt(j)))){
+                    cntT++;
+                }
 
 //                        System.out.println("cntA: " + cntA);
 //                        System.out.println("cntC: " + cntC);
 //                        System.out.println("cntG: " + cntG);
 //                        System.out.println("cntT: " + cntT);
-                    }
-                    if(cntA == condition[0] && cntC == condition[1] && cntG == condition[2] && cntT == condition[3]){
-                        cnt++;
-                    }
-//                }
-
-                startIdx++;
-                endIdx++;
             }
 
 
+            if(cntA == condition[0] && cntC == condition[1] && cntG == condition[2] && cntT == condition[3]){
+                cnt++;
+            }
+//                }
+
+
+//            for(; endIdx <= S; startIdx++, endIdx++){
+//                partOfStr.charAt(0)
+//
+//                if("A".equals(String.valueOf(partOfStr.charAt(j)))){
+//                    cntA++;
+//                }else if("C".equals(String.valueOf(partOfStr.charAt(j)))){
+//                    cntC++;
+//                }else if("G".equals(String.valueOf(partOfStr.charAt(j)))){
+//                    cntG++;
+//                }else if("T".equals(String.valueOf(partOfStr.charAt(j)))){
+//                    cntT++;
+//                }
+//
+//            }
+
             System.out.println(cnt);
-
-
-
-
-
 
 
             // ACGT
@@ -91,5 +99,15 @@ public class baekjoon_12891 {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    // 41 43 47 54
+    public static int kindsOfDna(char cha){
+        if(cha % 41 == 0) return 0;
+        if(cha % 43 == 0) return 1;
+        if(cha % 47 == 0) return 2;
+        if(cha % 54 == 0) return 3;
+
+        return 0;
     }
 }
